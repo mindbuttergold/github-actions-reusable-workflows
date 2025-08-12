@@ -14,6 +14,8 @@ Reusable workflows are consumed via a workflow file in the repo where usage is d
 
 **Note:** The reusable workflow will have only the permissions passed by the consumer repo, so any required permissions must be passed at the caller level. See the individual workflow files in this repo under `./.github/workflows/` for each workflow's required permissions.
 
+Workflows prefixed with `z_local_` are not reusable, they are this repo's local usage.
+
 **Example Workflow Call:**
 
 ```bash

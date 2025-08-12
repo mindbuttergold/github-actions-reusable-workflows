@@ -1,0 +1,15 @@
+name: "Validate PR Title"
+on:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - edited
+      - reopened
+
+jobs:
+  validate_pr_title:
+    permissions:
+      pull-requests: read
+    uses: ./.github/workflows/validate-pr-title.yaml
+    secrets: inherit

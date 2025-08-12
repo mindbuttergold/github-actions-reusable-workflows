@@ -1,0 +1,16 @@
+name: Check Community Approval
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
+      - unlabeled
+
+jobs:
+  check-community-approval:
+    permissions:
+      contents: read
+    uses: ./.github/workflows/check-community-approval.yaml
+    secrets: inherit
