@@ -1,3 +1,6 @@
+# Required Permissions:
+#   contents: read
+
 name: Check Community Approval
 on: workflow_call
 

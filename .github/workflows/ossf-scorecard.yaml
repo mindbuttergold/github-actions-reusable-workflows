@@ -1,3 +1,7 @@
+# Required Permissions:
+#   security-events: write
+#   id-token: write
+
 name: OSSF Scorecard
 on: workflow_call
 

@@ -1,3 +1,6 @@
+# Required Permissions:
+#   pull-requests: read
+
 name: Validate Semver PR Title
 on: workflow_call
 

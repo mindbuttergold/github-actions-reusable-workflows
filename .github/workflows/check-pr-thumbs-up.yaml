@@ -1,3 +1,6 @@
+# Required Permissions:
+#   contents: read
+
 name: Check PR Thumbs Up
 on: workflow_call
 
