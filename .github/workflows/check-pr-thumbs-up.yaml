@@ -1,9 +1,6 @@
 name: Check PR Thumbs Up
 on: workflow_call
 
-permissions:
-  contents: read
-
 jobs:
   check-pr-thumbs-up:
     runs-on: ubuntu-latest
