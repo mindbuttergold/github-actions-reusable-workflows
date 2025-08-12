@@ -1,16 +1,10 @@
 name: OSSF Scorecard
 on: workflow_call
 
-permissions: read-all
-
 jobs:
   analysis:
     name: Scorecard analysis
     runs-on: ubuntu-latest
-    permissions:
-      security-events: write
-      id-token: write
-
     steps:
       - name: "Checkout code"
         uses: actions/checkout@v5
