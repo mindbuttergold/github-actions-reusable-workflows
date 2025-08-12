@@ -1,9 +1,5 @@
 name: OSSF Scorecard
-on:
-  schedule:
-    - cron: '0 5 * * 1' # Every Sunday at 10pm MST (5:00 UTC)
-  push:
-    branches: [ "main" ]
+on: workflow_call
 
 permissions: read-all
 

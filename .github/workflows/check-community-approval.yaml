@@ -1,19 +1,11 @@
 name: Check Community Approval
-
-on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - labeled
-      - unlabeled
+on: workflow_call
 
 permissions:
   contents: read
 
 jobs:
-  check_approval:
+  check_community_approval:
     runs-on: ubuntu-latest
     steps:
       - name: Check for community approval

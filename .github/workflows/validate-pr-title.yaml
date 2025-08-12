@@ -1,12 +1,5 @@
-name: "Validate PR Title"
-
-on:
-  pull_request_target:
-    types:
-      - opened
-      - synchronize
-      - edited
-      - reopened
+name: Validate Semver PR Title
+on: workflow_call
 
 permissions:
   contents: read

@@ -1,8 +1,5 @@
 name: Semver Release
-on:
-  push:
-    branches:
-      - main
+on: workflow_call
 
 permissions:
   contents: read
