@@ -1,4 +1,5 @@
 # Required Permissions:
+#   contents: read
 #   pull-requests: read
 
 name: validate-pr-title
