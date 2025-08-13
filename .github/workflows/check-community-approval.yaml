@@ -3,8 +3,6 @@
 
 name: check-community-approval
 on: workflow_call
-permissions:
-  contents: read
 
 jobs:
   check-community-approval:

@@ -9,6 +9,7 @@ jobs:
   ossf-scorecard:
     name: ossf-scorecard
     permissions:
+      contents: read
       security-events: write
       id-token: write
     uses: ./.github/workflows/ossf-scorecard.yaml
