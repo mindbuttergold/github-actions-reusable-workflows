@@ -34,6 +34,6 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-    uses: ./.github/workflows/validate-pr-title.yaml
+    uses: mindbuttergold/github-actions-reusable-workflows/.github/workflows/validate-pr-title.yaml@v1.0.0
     secrets: inherit
 ```
