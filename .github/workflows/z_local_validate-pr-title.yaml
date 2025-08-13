@@ -6,12 +6,12 @@ on:
       - synchronize
       - edited
       - reopened
+permissions: read-all
 
 jobs:
   validate-pr-title:
     name: validate-pr-title
     permissions:
-      contents: read
       pull-requests: read
     uses: ./.github/workflows/validate-pr-title.yaml
     secrets: inherit

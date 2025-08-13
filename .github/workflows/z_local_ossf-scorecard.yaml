@@ -4,12 +4,12 @@ on:
     - cron: '0 5 * * 1' # Every Sunday at 10pm MST (5:00 UTC)
   push:
     branches: [ "main" ]
+permissions: read-all
 
 jobs:
   ossf-scorecard:
     name: ossf-scorecard
     permissions:
-      contents: read
       security-events: write
       id-token: write
     uses: ./.github/workflows/ossf-scorecard.yaml

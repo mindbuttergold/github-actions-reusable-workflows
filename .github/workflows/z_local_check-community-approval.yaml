@@ -7,11 +7,10 @@ on:
       - reopened
       - labeled
       - unlabeled
+permissions: read-all
 
 jobs:
   check-community-approval:
     name: check-community-approval
-    permissions:
-      contents: read
     uses: ./.github/workflows/check-community-approval.yaml
     secrets: inherit
