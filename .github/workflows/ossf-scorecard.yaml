@@ -1,11 +1,10 @@
 # Required Permissions:
+#   contents: read
 #   security-events: write
 #   id-token: write
 
 name: ossf-scorecard
 on: workflow_call
-permissions:
-  contents: read
 
 jobs:
   ossf-scorecard:
