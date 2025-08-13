@@ -2,12 +2,12 @@
 #   security-events: write
 #   id-token: write
 
-name: OSSF Scorecard
+name: ossf-scorecard
 on: workflow_call
 
 jobs:
-  analysis:
-    name: Scorecard analysis
+  ossf-scorecard:
+    name: ossf-scorecard
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout code"

@@ -1,4 +1,4 @@
-name: Validate PR Title
+name: validate-pr-title
 on:
   pull_request_target:
     types:
@@ -8,7 +8,8 @@ on:
       - reopened
 
 jobs:
-  validate_pr_title:
+  validate-pr-title:
+    name: validate-pr-title
     permissions:
       pull-requests: read
     uses: ./.github/workflows/validate-pr-title.yaml

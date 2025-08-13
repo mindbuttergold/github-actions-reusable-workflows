@@ -1,11 +1,12 @@
-name: Semver Release
+name: semver-release
 on:
   push:
     branches:
       - main
 
 jobs:
-  release:
+  semver-release:
+    name: semver-release
     permissions:
       contents: write
       issues: write

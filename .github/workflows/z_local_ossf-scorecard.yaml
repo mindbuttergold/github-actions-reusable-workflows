@@ -1,4 +1,4 @@
-name: OSSF Scorecard
+name: ossf-scorecard
 on:
   schedule:
     - cron: '0 5 * * 1' # Every Sunday at 10pm MST (5:00 UTC)
@@ -6,7 +6,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-  analysis:
+  ossf-scorecard:
+    name: ossf-scorecard
     permissions:
       security-events: write
       id-token: write

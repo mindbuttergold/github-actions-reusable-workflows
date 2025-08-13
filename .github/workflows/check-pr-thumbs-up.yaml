@@ -1,11 +1,12 @@
 # Required Permissions:
 #   contents: read
 
-name: Check PR Thumbs Up
+name: check-pr-thumbs-up
 on: workflow_call
 
 jobs:
   check-pr-thumbs-up:
+    name: check-pr-thumbs-up
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.LABEL_PRS_TOKEN }}
