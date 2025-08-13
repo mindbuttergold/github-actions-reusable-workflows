@@ -19,7 +19,7 @@ Workflows prefixed with `z_local_` are not reusable, they are this repo's local 
 **Example Workflow Call:**
 
 ```bash
-name: "Validate PR Title"
+name: validate-pr-title
 on:
   pull_request_target:
     types:
@@ -29,9 +29,11 @@ on:
       - reopened
 
 jobs:
-  validate_pr_title:
+  validate-pr-title:
+    name: validate-pr-title
     permissions:
+      contents: read
       pull-requests: read
-    uses: mindbuttergold/github-actions-reusable-workflows/.github/workflows/validate-pr-title.yaml@v1
+    uses: ./.github/workflows/validate-pr-title.yaml
     secrets: inherit
 ```
