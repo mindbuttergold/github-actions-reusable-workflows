@@ -6,6 +6,8 @@ on:
       - synchronize
       - edited
       - reopened
+permissions:
+  contents: read
 
 jobs:
   validate-pr-title:
