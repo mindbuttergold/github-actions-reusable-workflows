@@ -4,6 +4,8 @@
 
 name: ossf-scorecard
 on: workflow_call
+permissions:
+  contents: read
 
 jobs:
   ossf-scorecard:

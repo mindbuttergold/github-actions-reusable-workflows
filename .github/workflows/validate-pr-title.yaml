@@ -3,6 +3,8 @@
 
 name: validate-pr-title
 on: workflow_call
+permissions:
+  contents: read
 
 jobs:
   validate-pr-title:

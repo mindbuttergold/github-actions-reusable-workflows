@@ -3,6 +3,8 @@
 
 name: check-pr-thumbs-up
 on: workflow_call
+permissions:
+  contents: read
 
 jobs:
   check-pr-thumbs-up:
