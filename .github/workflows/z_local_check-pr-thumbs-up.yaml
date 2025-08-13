@@ -4,8 +4,7 @@ on:
     - cron: '0 5 * * *'   # Runs daily at 10:00 PM MST (5:00 AM UTC next day)
     - cron: '0 13 * * *'  # Runs daily at 6:00 AM MST (1:00 PM UTC)  
     - cron: '0 19 * * *'  # Runs daily at 12:00 PM MST (7:00 PM UTC)
-permissions:
-  contents: read
+permissions: read-all
 
 jobs:
   check-pr-thumbs-up:
