@@ -1,20 +1,16 @@
-name: OSSF Scorecard
-on:
-  schedule:
-    - cron: '0 5 * * 1' # Every Sunday at 10pm MST (5:00 UTC)
-  push:
-    branches: [ "main" ]
+# Required Permissions:
+#   security-events: write
+#   id-token: write
 
-permissions: read-all
+name: ossf-scorecard
+on: workflow_call
+permissions:
+  contents: read
 
 jobs:
-  analysis:
-    name: Scorecard analysis
+  ossf-scorecard:
+    name: ossf-scorecard
     runs-on: ubuntu-latest
-    permissions:
-      security-events: write
-      id-token: write
-
     steps:
       - name: "Checkout code"
         uses: actions/checkout@v5

@@ -1,16 +1,14 @@
-name: Check PR Thumbs Up and Manage Labels
+# Required Permissions:
+#   contents: read
 
-on:
-  schedule:
-    - cron: '0 5 * * *'   # Runs daily at 10:00 PM MST (5:00 AM UTC next day)
-    - cron: '0 13 * * *'  # Runs daily at 6:00 AM MST (1:00 PM UTC)  
-    - cron: '0 19 * * *'  # Runs daily at 12:00 PM MST (7:00 PM UTC)
-
+name: check-pr-thumbs-up
+on: workflow_call
 permissions:
   contents: read
 
 jobs:
   check-pr-thumbs-up:
+    name: check-pr-thumbs-up
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.LABEL_PRS_TOKEN }}

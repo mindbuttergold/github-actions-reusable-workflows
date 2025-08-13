@@ -1,0 +1,16 @@
+name: semver-release
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  semver-release:
+    name: semver-release
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
+    uses: ./.github/workflows/semver-release.yaml
+    secrets: inherit

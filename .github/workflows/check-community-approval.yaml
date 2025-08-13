@@ -1,22 +1,17 @@
-name: Check Community Approval
+# Required Permissions:
+#   contents: read
 
-on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - labeled
-      - unlabeled
-
+name: check-community-approval
+on: workflow_call
 permissions:
   contents: read
 
 jobs:
-  check_approval:
+  check-community-approval:
+    name: check-community-approval
     runs-on: ubuntu-latest
     steps:
-      - name: Check for community approval
+      - name: check-community-approval
         run: |
           if [[ "${{ contains(github.event.pull_request.labels.*.name, 'community-approved') }}" == "true" ]]; then
             echo "This PR has met the requirements for community approval."
