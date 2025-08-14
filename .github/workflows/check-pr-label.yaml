@@ -29,3 +29,4 @@ jobs:
             else
               echo "This PR is missing the ${{ inputs.label }} label."
             fi
+          fi
