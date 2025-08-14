@@ -13,9 +13,8 @@ on:
         default: true
 
 jobs:
-  check-pr-label-fail-if-missing:
-    if: ${{ inputs.fail-if-missing }}
-    name: check-pr-label-fail-if-missing
+  check-pr-label:
+    name: check-pr-label
     runs-on: ubuntu-latest
     steps:
       - name: check-pr-label
