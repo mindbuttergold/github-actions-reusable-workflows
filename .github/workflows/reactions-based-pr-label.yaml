@@ -76,7 +76,7 @@ jobs:
                 -H "Accept: application/vnd.github+json" \
                 -H "X-GitHub-Api-Version: 2022-11-28" \
                 "/repos/${GITHUB_REPOSITORY}/issues/$PR_NUMBER/labels" \
-                -q '[.[] | select(.name == \"$LABEL\")] | length')
+                -q "[.[] | select(.name == \"$LABEL\")] | length")
               
               if [ "$HAS_LABEL" -gt 0 ]; then
                 echo "PR #$PR_NUMBER has the $LABEL label."
