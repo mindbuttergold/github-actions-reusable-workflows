@@ -51,7 +51,11 @@ jobs:
   check-pr-thumbs-up:
     name: check-pr-thumbs-up
     permissions:
-      pull-request: read
+      pull-requests: read
       issues: write
     uses: mindbuttergold/github-actions-reusable-workflows/.github/workflows/reactions-based-pr-label.yaml@v2.0.0
+    with:
+      reaction: "+1"
+      reaction-count: 5
+      label: "community-approved"
 ```

@@ -23,19 +23,9 @@ jobs:
           if [[ "${{ contains(github.event.pull_request.labels.*.name, inputs.label) }}" == "true" ]]; then
             echo "This PR has met the ${{ inputs.label }} label check."
           else
-            echo "::error::This PR has not met the ${{ inputs.label }} label check."
-            exit 1
-          fi
-  
-  check-pr-label:
-    if: ${{ !inputs.fail-if-missing }}
-    name: check-pr-label
-    runs-on: ubuntu-latest
-    steps:
-      - name: check-pr-label
-        run: |
-          if [[ "${{ contains(github.event.pull_request.labels.*.name, inputs.label) }}" == "true" ]]; then
-            echo "This PR has met the ${{ inputs.label }} label check."
-          else
-            echo "This PR has not met the ${{ inputs.label }} label check."
-          fi
+            if [[ "${{ inputs.fail-if-missing }}" == "true" ]]; then
+              echo "::error::This PR is missing the ${{ inputs.label }} label."
+              exit 1
+            else
+              echo "This PR is missing the ${{ inputs.label }} label."
+            fi

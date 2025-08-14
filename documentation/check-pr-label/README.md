@@ -18,7 +18,7 @@ None
 
 ```yaml
 permissions:
-  content: read
+  contents: read
 ```
 
 **Note:** It is best practice to define least privilege permissions (read-all) at the top-level of a workflow file, and any greater permissions needed, at the individual job-level.
@@ -45,7 +45,7 @@ on:
       - labeled
       - unlabeled
 permissions:
-  content: read
+  contents: read
 
 jobs:
   check-pr-label:
