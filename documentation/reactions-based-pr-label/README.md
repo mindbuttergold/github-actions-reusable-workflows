@@ -4,7 +4,7 @@ The reactions-based-pr-label workflow checks each open PR in a repository for th
 
 ## Functionality
 
-If there are no open PRs in the repo, the job does nothing. If the reaction count is met on any PR, the job adds the label to that PR. If there are open PRs, but they do not have the desired reaction count, the job checks to see if the label was present already. If the reaction count is not met on a PR, but the label was present, it will remove the label from that PR (i.e., if reactions were removed). If the reaction count is not met on a PR and the label is not present, the job does nothing. 
+If there are no open PRs in the repo, the job does nothing. If the reaction count is met on any PR, the job adds the label to that PR. If there are open PRs, but they do not have the desired reaction count, the job checks to see if the label was present already. If the reaction count is not met on a PR, and the label was present from before (i.e., reactions were removed), it will remove the label from that PR. If the reaction count is not met on a PR and the label is not present, the job does nothing.
 
 ## Prerequisites
 
@@ -51,7 +51,8 @@ jobs:
   check-pr-thumbs-up:
     name: check-pr-thumbs-up
     permissions:
-      pull-requests: read
+      contents: read
+      pull-requests: write
       issues: write
     uses: mindbuttergold/github-actions-reusable-workflows/.github/workflows/reactions-based-pr-label.yaml@v2.0.0
     with:

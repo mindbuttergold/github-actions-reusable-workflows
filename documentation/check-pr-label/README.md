@@ -35,7 +35,7 @@ fail-if-missing: "false"
 ### Example Workflow Call
 
 ```yaml
-name: check-pr-label
+name: check-community-approval-label
 on:
   pull_request:
     types:
@@ -48,8 +48,8 @@ permissions:
   contents: read
 
 jobs:
-  check-pr-label:
-    name: check-pr-label
+  check-community-approval-label:
+    name: check-community-approval-label
     uses: mindbuttergold/github-actions-reusable-workflows/.github/workflows/check-pr-label.yaml@v2.0.0
     with:
       label: "community-approved"
