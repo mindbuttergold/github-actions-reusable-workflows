@@ -57,7 +57,7 @@ jobs:
       contents: read
       pull-requests: write
       issues: write
-    uses: mindbuttergold/github-actions-reusable-workflows/.github/workflows/reactions-based-pr-label.yaml@v2.0.0
+    uses: mindbuttergold/github-actions-reusable-workflows/.github/workflows/reactions-based-pr-label.yaml@v2
     with:
       reaction: "+1"
       reaction-count: 5

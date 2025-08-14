@@ -1,8 +1,3 @@
-# Required Permissions:
-#   contents: read
-#   security-events: write
-#   id-token: write
-
 name: ossf-scorecard
 on: workflow_call
 
@@ -21,5 +16,5 @@ jobs:
         with:
           results_file: results.sarif
           results_format: sarif
-          repo_token: ${{ secrets.OSSF_SCORECARD_TOKEN }}
+          repo_token: ${{ github.token }}
           publish_results: true
