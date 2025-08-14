@@ -1,12 +1,25 @@
-# Required Permissions:
-#   contents: read
+name: reactions-based-pr-label
+on: 
+  workflow_call:
+    inputs:
+      reaction:
+        description: "The reaction type to check for"
+        required: true
+        type: string
 
-name: check-pr-thumbs-up
-on: workflow_call
+      reaction-count:
+        description: "The minimum number of reactions required to add the label"
+        required: true
+        type: number
+
+      label:
+        description: "The label to add / remove based on the reaction count"
+        required: true
+        type: string
 
 jobs:
-  check-pr-thumbs-up:
-    name: check-pr-thumbs-up
+  reactions-based-pr-label:
+    name: reactions-based-pr-label
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.LABEL_PRS_TOKEN }}
@@ -28,7 +41,7 @@ jobs:
           echo "OPEN_PR_NUMS=$OPEN_PR_NUMS" >> $GITHUB_ENV
           echo "open_prs=true" >> $GITHUB_OUTPUT
 
-      - name: Get PR Thumbs Up Counts and Manage Labels
+      - name: Get PR Reaction Counts and Manage Labels
         if: steps.get-open-prs.outputs.open_prs == 'true'
         run: |
           OPEN_PR_NUMS="${{ env.OPEN_PR_NUMS }}"
@@ -38,37 +51,37 @@ jobs:
 
             PR_AUTHOR=$(gh api repos/${GITHUB_REPOSITORY}/pulls/$PR_NUMBER --jq '.user.login')
             
-            THUMBS_UP_COUNT_EXCLUDING_AUTHOR=$(gh api \
+            REACTION_COUNT_EXCLUDING_AUTHOR=$(gh api \
               -H "Accept: application/vnd.github+json" \
               -H "X-GitHub-Api-Version: 2022-11-28" \
               "/repos/${GITHUB_REPOSITORY}/issues/$PR_NUMBER/reactions" \
-              -q "[.[] | select(.content == \"+1\" and .user.login != \"$PR_AUTHOR\")] | length")   
-            echo "PR #$PR_NUMBER has $THUMBS_UP_COUNT_EXCLUDING_AUTHOR thumbs up excluding from the author."
+              -q "[.[] | select(.content == \${{ inputs.reaction }}\" and .user.login != \"$PR_AUTHOR\")] | length")   
+            echo "PR #$PR_NUMBER has $REACTION_COUNT_EXCLUDING_AUTHOR ${{ inputs.reaction }} reactions, excluding from the author."
 
-            if [ "$THUMBS_UP_COUNT_EXCLUDING_AUTHOR" -ge 5 ]; then
-              echo "Adding 'community-approved' label to PR #$PR_NUMBER."
+            if [ "$REACTION_COUNT_EXCLUDING_AUTHOR" -ge ${{ inputs.reaction-count }} ]; then
+              echo "Adding ${{ inputs.label }} label to PR #$PR_NUMBER."
               gh api -X POST \
                 -H "Accept: application/vnd.github+json" \
                 -H "X-GitHub-Api-Version: 2022-11-28" \
                 "/repos/${GITHUB_REPOSITORY}/issues/$PR_NUMBER/labels" \
-                -f "labels[]=community-approved" > /dev/null
+                -f "labels[]=${{ inputs.label }}" > /dev/null
             
             else
-              echo "PR #$PR_NUMBER does not have enough thumbs up reactions."
+              echo "PR #$PR_NUMBER does not have enough ${{ inputs.reaction }} reactions."
 
-              HAS_COMMUNITY_APPROVED_LABEL=$(gh api \
+              HAS_LABEL=$(gh api \
                 -H "Accept: application/vnd.github+json" \
                 -H "X-GitHub-Api-Version: 2022-11-28" \
                 "/repos/${GITHUB_REPOSITORY}/issues/$PR_NUMBER/labels" \
-                -q '[.[] | select(.name == "community-approved")] | length')
+                -q '[.[] | select(.name == ${{ inputs.label }})] | length')
               
-              if [ "$HAS_COMMUNITY_APPROVED_LABEL" -gt 0 ]; then
-                echo "PR #$PR_NUMBER has the 'community-approved' label."
-                echo "Removing 'community-approved' label from PR #$PR_NUMBER."
+              if [ "$HAS_LABEL" -gt 0 ]; then
+                echo "PR #$PR_NUMBER has the ${{ inputs.label }} label."
+                echo "Removing ${{ inputs.label }} label from PR #$PR_NUMBER."
                 gh api -X DELETE \
                   -H "Accept: application/vnd.github+json" \
                   -H "X-GitHub-Api-Version: 2022-11-28" \
-                  "/repos/${GITHUB_REPOSITORY}/issues/$PR_NUMBER/labels/community-approved" > /dev/null
+                  "/repos/${GITHUB_REPOSITORY}/issues/$PR_NUMBER/labels/${{ inputs.label }}" > /dev/null
               fi
             fi
           done

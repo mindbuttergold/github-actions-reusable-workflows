@@ -1,0 +1,41 @@
+name: check-pr-label
+on: 
+  workflow_call:
+    inputs:
+      label:
+        description: 'The label to check for on the pull request.'
+        type: string
+        required: true
+
+      fail-if-missing:
+        description: 'Whether to fail the job if the label is missing.'
+        type: boolean
+        default: true
+
+jobs:
+  check-pr-label-fail-if-missing:
+    if: ${{ inputs.fail-if-missing }}
+    name: check-pr-label-fail-if-missing
+    runs-on: ubuntu-latest
+    steps:
+      - name: check-pr-label
+        run: |
+          if [[ "${{ contains(github.event.pull_request.labels.*.name, inputs.label) }}" == "true" ]]; then
+            echo "This PR has met the ${{ inputs.label }} label check."
+          else
+            echo "::error::This PR has not met the ${{ inputs.label }} label check."
+            exit 1
+          fi
+  
+  check-pr-label:
+    if: ${{ !inputs.fail-if-missing }}
+    name: check-pr-label
+    runs-on: ubuntu-latest
+    steps:
+      - name: check-pr-label
+        run: |
+          if [[ "${{ contains(github.event.pull_request.labels.*.name, inputs.label) }}" == "true" ]]; then
+            echo "This PR has met the ${{ inputs.label }} label check."
+          else
+            echo "This PR has not met the ${{ inputs.label }} label check."
+          fi
