@@ -35,6 +35,9 @@ reaction-count: 5
 # required, the label to add / remove based on the reaction count
 label: "your-label"
 ```
+### Outputs
+
+None
 
 ### Example Workflow Call
 

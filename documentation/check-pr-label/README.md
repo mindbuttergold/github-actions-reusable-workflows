@@ -32,6 +32,13 @@ label: "your-label"
 fail-if-missing: "false"
 ```
 
+### Outputs
+
+```yaml
+# Whether the PR label check succeeded or failed, values = "success" or "fail"
+- success-status
+```
+
 ### Example Workflow Call
 
 ```yaml
