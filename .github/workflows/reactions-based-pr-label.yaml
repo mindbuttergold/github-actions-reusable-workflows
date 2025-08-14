@@ -55,7 +55,7 @@ jobs:
               -H "Accept: application/vnd.github+json" \
               -H "X-GitHub-Api-Version: 2022-11-28" \
               "/repos/${GITHUB_REPOSITORY}/issues/$PR_NUMBER/reactions" \
-              -q "[.[] | select(.content == \${{ inputs.reaction }}\" and .user.login != \"$PR_AUTHOR\")] | length")   
+              -q "[.[] | select(.content == \"${{ inputs.reaction }}\" and .user.login != \"$PR_AUTHOR\")] | length")   
             echo "PR #$PR_NUMBER has $REACTION_COUNT_EXCLUDING_AUTHOR ${{ inputs.reaction }} reactions, excluding from the author."
 
             if [ "$REACTION_COUNT_EXCLUDING_AUTHOR" -ge ${{ inputs.reaction-count }} ]; then
