@@ -9,5 +9,12 @@ permissions: read-all
 jobs:
   check-pr-thumbs-up:
     name: check-pr-thumbs-up
-    uses: ./.github/workflows/check-pr-thumbs-up.yaml
-    secrets: inherit
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    uses: ./.github/workflows/reactions-based-pr-label.yaml
+    with: 
+      reaction: "+1"
+      reaction-count: 1
+      label: "community-approved"

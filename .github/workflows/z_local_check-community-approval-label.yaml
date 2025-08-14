@@ -1,0 +1,18 @@
+name: check-community-approval-label
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
+      - unlabeled
+permissions: read-all
+
+jobs:
+  check-community-approval-label:
+    name: check-community-approval-label
+    uses: ./.github/workflows/check-pr-label.yaml
+    secrets: inherit
+    with:
+      label: "community-approved"
