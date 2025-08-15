@@ -1,6 +1,6 @@
 # check-pr-label
 
-The check-pr-label workflow checks for the presence of a specified label on a PR.
+The check-pr-label workflow is a custom mindbuttergold workflow that checks for the presence of a specified label on a PR.
 
 ## Functionality
 
@@ -12,7 +12,7 @@ None
 
 ## Usage
 
-- The workflow must be triggered by a PR event
+- The workflow should be triggered on `pull_request`.
 
 ### Required Permissions
 

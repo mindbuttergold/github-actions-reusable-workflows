@@ -11,7 +11,4 @@ permissions: read-all
 jobs:
   validate-pr-title:
     name: validate-pr-title
-    permissions:
-      pull-requests: read
-    uses: ./.github/workflows/validate-pr-title.yaml
-    secrets: inherit
+    uses: ./.github/workflows/check-conventional-commit-pr-title.yaml

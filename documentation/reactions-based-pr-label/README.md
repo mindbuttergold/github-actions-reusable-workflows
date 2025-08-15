@@ -1,6 +1,6 @@
 # reactions-based-pr-label
 
-The reactions-based-pr-label workflow checks each open PR in a repository for the desired count of a specified reaction, and adds a label if the count is met.
+The reactions-based-pr-label workflow is a custom mindbuttergold workflow that checks each open PR in a repository for the desired count of a specified reaction, and adds a label to the PR if the count is met.
 
 ## Functionality
 
@@ -12,7 +12,7 @@ None
 
 ## Usage
 
-- This workflow should be triggered on a cron schedule, as it checks and manages all open PRs across the repository.
+- This workflow should be triggered on `schedule`, as it checks and manages all open PRs across the repository.
 
 ### Required Permissions
 

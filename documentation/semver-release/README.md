@@ -1,6 +1,6 @@
 # semver-release
 
-The semver-release workflow uses the [semantic-release](https://github.com/semantic-release/semantic-release) package to automate versioned Github releases, based on [Conventional Commit standards](https://www.conventionalcommits.org/en/v1.0.0/). It includes the [Conventional Changelog plugin](https://github.com/conventional-changelog/conventional-changelog) for release notes, and the [semantic-release-major-tag](https://github.com/doteric/semantic-release-major-tag) plugin for major version alias tagging.
+The semver-release workflow uses the [semantic-release](https://github.com/semantic-release/semantic-release) package to automate versioned Github releases, based on [Conventional Commit standards](https://www.conventionalcommits.org/en/v1.0.0/). It includes the [Conventional Changelog plugin](https://github.com/conventional-changelog/conventional-changelog) for release notes, and the [semantic-release-major-tag plugin](https://github.com/doteric/semantic-release-major-tag) for major version alias tagging.
 
 ## Functionality
 
@@ -25,8 +25,8 @@ The first time this workflow runs on a non-versioned repository, it will release
 
 ## Usage
 
-- The workflow must be triggered by a push to the `main` branch
-- It is strongly recommended to only use squash merging, and to use this workflow in conjunction with the [validate-pr-title workflow](../validate-pr-title/).
+- The workflow must be triggered on `push` to the default branch
+- It is strongly recommended to only use squash merging, and to use this workflow in conjunction with a conventional commit PR title check.
 
 ### Required Permissions
 
