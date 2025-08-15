@@ -49,5 +49,5 @@ permissions: read-all
 jobs:
   validate-pr-title:
     name: validate-pr-title
-    uses: ./.github/workflows/check-conventional-commit-pr-title.yaml
+    uses: mindbuttergold/github-actions-reusable-workflows/.github/workflows/check-conventional-commit-pr-title.yaml@v2
 ```
