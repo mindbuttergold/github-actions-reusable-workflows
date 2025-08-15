@@ -4,7 +4,7 @@ The check-conventional-commit-pr-title workflow is just a wrapper over the [acti
 
 ## Functionality
 
-The workflow checks the title of a PR to make sure it is consistent with conventional commit formatting (e.g., `feat: some commit info`). This is done because the title of squash merges are what is used as the final, single commit message upon merging, for the semver-release workflow to then base release actions off. If the title does not meet the standard, the job fails. If it meets the standard, the job succeeds.
+The workflow checks the title of a PR to make sure it is consistent with conventional commit formatting (e.g., `feat: some commit info`). This is done because the title of squash merges are what is used as the final, single commit message upon merging, for the semver-release workflow to then base release actions off. If the title does not meet the standard, the job fails. If it meets the standard, the job succeeds. If the `edited` PR trigger is added, the job will automatically re-run after the PR title is edited.
 
 ## Prerequisites
 
@@ -14,6 +14,7 @@ None
 
 - The workflow must be triggered on `pull_request_target` if the repository will have fork-based PRs. In this case, the workflow will only use the code that's on the main branch of the base repository, so it will not run until after it has been merged.
 - If not doing fork-based PRs, the workflow can be triggered on `pull_request`.
+- It is highly recommended to also trigger on the `edited` event, so the workflow will run again automatically once the PR title is corrected after a failed run.
 
 ### Required Permissions
 
