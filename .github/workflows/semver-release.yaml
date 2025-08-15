@@ -1,9 +1,3 @@
-# Required Permissions:
-#   contents: write
-#   issues: write
-#   pull-requests: write
-#   id-token: write
-
 name: semver-release
 on: workflow_call
 
@@ -25,7 +19,10 @@ jobs:
       - name: Install Conventional Commits Preset Dependency
         run: npm i conventional-changelog-conventionalcommits@v9 -D
 
+      - name: Install Semantic Release Major Tag Plugin
+        run: npm i semantic-release-major-tag
+
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: npx semantic-release@24
