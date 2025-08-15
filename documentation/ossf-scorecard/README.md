@@ -1,4 +1,4 @@
-# semver-release
+# ossf-scorecard
 
 The ossf-scorecard workflow is a thin, configured wrapper over the Open Source Security Foundation's [scorecard-action Github Action](https://github.com/ossf/scorecard-action/tree/v2.4.2/). It rates a repository's adherence to Open Source Software security best practices.
 
